@@ -1,1 +1,7 @@
-# pharce.github.io
+# Faris Gulamali
+
+### Education
+
+### Work Exeprience
+
+### Projects
