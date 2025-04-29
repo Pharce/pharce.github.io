@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faris Gulamali | MD, SWE, AI, IR</title>
+    <style>
+        :root {
+            --primary-bg: #000000;
+            --secondary-bg: #1a1a1a;
+            --text-color: #ffffff;
+            --accent-color: #a0a0a0;
+            --hover-color: #d4d4d4;
+            --border-color: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--secondary-bg);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--hover-color);
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/api/placeholder/1200/800');
+            background-size: cover;
+            background-position: center;
+            margin-top: 60px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            color: var(--accent-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--text-color);
+            border: 2px solid var(--text-color);
+            padding: 12px 30px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-right: 15px;
+        }
+        
+        .btn:hover {
+            background-color: var(--text-color);
+            color: var(--primary-bg);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        section h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .about-text {
+            flex: 1;
+            padding-right: 40px;
+        }
+        
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .expertise-card {
+            background-color: var(--secondary-bg);
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .expertise-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .expertise-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .expertise-card p {
+            color: var(--accent-color);
+        }
+        
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .research-card {
+            background-color: var(--secondary-bg);
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .research-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .research-content {
+            padding: 25px;
+        }
+        
+        .research-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .research-content p {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+        
+        .read-more {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+        
+        .read-more:hover {
+            color: var(--hover-color);
+        }
+        
+        .publications-list {
+            background-color: var(--secondary-bg);
+            padding: 30px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        
+        .publications-list li {
+            margin-bottom: 15px;
+            list-style: none;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+        
+        .publications-list li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .publication-title {
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .publication-authors {
+            color: var(--accent-color);
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+        
+        .publication-journal {
+            color: var(--accent-color);
+            font-size: 14px;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--secondary-bg);
+            padding: 40px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 2px solid var(--text-color);
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--text-color);
+            color: var(--primary-bg);
+        }
+        
+        footer {
+            background-color: var(--secondary-bg);
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-right: 20px;
+        }
+        
+        .footer-links a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--hover-color);
+        }
+        
+        .copyright {
+            color: var(--accent-color);
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Faris Gulamali</div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#expertise">Expertise</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Real AI applied to Real Healthcare</h1>
+                <p>Faris' research career has focused on utilizing big data and machine learning techniques to both maximize clinical support and understand the biological underpinnings of complex disease. 
+                    Developing tools for tasks like sample size estimation for machine learning and time series analysis, Faris has focused on improving accessibility to machine learning algorithms for practitioners across the spectrum. 
+                    By bridging clinicians to machine learning, Faris has focused on generating novel insights by combining both knowledge of these experienced practitioners and an understanding of what machine learning can do. 
+                    On the flip side, Faris has also focused on understanding the causal nature of genetics is disease, working with massive datasets such as the UK Biobank to reveal how complex disease expresses itself variably in the general population. 
+                </p>
+                <a href="#research" class="btn">View Research</a>
+                <a href="#contact" class="btn">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Faris Gulamali</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Faris Gulamali is an AI researcher and Interventional Radiology Resident with publications in NPJ DM, Communications Medicine, Science, ICLR, JMLR, JMIR.</p>
+                    <p>After completing a undergraduate studies in Chemistry and Statistics at Williams College and medical school at the Icahn School of Medicine at Mount Sinai Hospital, Faris is moving to Duke for an Integrated Residency in Interventional Radiology.</p>
+                    <p>Faris has published 15 articles with 3 patents, developing algorithms applied to neuro-critical care, nephrology and cardiology.</p>
+                </div>
+                <div class="about-image">
+                    <img src="headshot.jpg" alt="Faris Gulamali">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="expertise" style="background-color: var(--secondary-bg);">
+        <div class="container">
+            <h2>Areas of Expertise</h2>
+            <div class="expertise-grid">
+                <div class="expertise-card">
+                    <h3>Time Series for Healthcare</h3>
+                    <p>Developing novel state-of-the-art algorithms for time series clustering and classification</p>
+                </div>
+                <div class="expertise-card">
+                    <h3>Federated Learning</h3>
+                    <p>Training algorithms across multiple hospital systems without violating patient privacy.</p>
+                </div>
+                <div class="expertise-card">
+                    <h3>Non-invasive monitoring</h3>
+                    <p>Creation of AI systems that assist physicians in detecting and characterizing abnormalities in real-time settings.</p>
+                </div>
+                <div class="expertise-card">
+                    <h3>Procedural AI Assistance</h3>
+                    <p>Pioneering AI systems that provide real-time guidance during interventional procedures, enhancing precision and reducing complications.</p>
+                </div>
+                <div class="expertise-card">
+                    <h3>Sample Size Estimation</h3>
+                    <p>Advanced techniques for sample size estimation in the healthcare space of complex AI algorithms.</p>
+                </div>
+                <div class="expertise-card">
+                    <h3>Data-Centric AI</h3>
+                    <p>Research focused on debiasing AI decision-making via data-centric approaches.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="research">
+        <div class="container">
+            <h2>Current Research</h2>
+            <div class="research-grid">
+                <div class="research-card">
+                    <img src="aicpv2.png" alt="AI-assisted tumor detection">
+                    <div class="research-content">
+                        <h3>AI-Enhanced Early Detection of Intracranial Hypertension</h3>
+                        <p>Developing deep learning algorithms that can identify subtle biomarkers of qntracranial hypertension quicker than conventional methods, potentially improving treatment outcomes.</p>
+                        <a href="https://www.nature.com/articles/s41746-024-01227-0" class="read-more">Read More →</a>
+                    </div>
+                </div>
+                <div class="research-card">
+                    <img src="angio.jpeg" alt="Procedural guidance system">
+                    <div class="research-content">
+                        <h3>Real-time AI Guidance for Complex Vascular Interventions</h3>
+                        <p>Creating an AI system that provides dynamic guidance during complex vascular procedures, predicting optimal tool paths and identifying potential complications before they occur.</p>
+                        <!--- <a href="#" class="read-more">Read More →</a> -->
+                    </div>
+                </div>
+                <div class="research-card">
+                    <img src="debiasing.png" alt="Multimodal imaging">
+                    <div class="research-content">
+                        <h3>Debiasing AI algorithms via data-centric approaches</h3>
+                        <p>Detecting, characterizing and mitigating a breadth of differentiable and non-differntiable algorithms via proxies for learnability.</p>
+                        <a href="https://www.medrxiv.org/content/10.1101/2023.11.06.23298164v2" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications" style="background-color: var(--secondary-bg);">
+        <div class="container">
+            <h2>Selected Publications</h2>
+            <ul class="publications-list">
+                <li>
+                    <div class="publication-title">Derivation, external and clinical validation of a deep learning approach for detecting intracranial hypertension</div>
+                    <div class="publication-authors">Gulamali et al</div>
+                    <div class="publication-journal">npj Digital Medicine 7.1 (2024): 233</div>
+                </li>
+                <li>
+                    <div class="publication-title">Online Unsupervised Representation Learning of Waveforms in the Intensive Care Unit via a novel cooperative framework: Spatially Resolved Temporal Networks (SpaRTEn).</div>
+                    <div class="publication-authors">Gulamali, F. F., Sawant, A. S., Hofer, I., … Nadkarni, G. N.</div>
+                    <div class="publication-journal">Journal of Machine Learning Research, Machine Learning in Healthcare Conference, 1-22, 219.</div>
+                </li>
+                <li>
+                    <div class="publication-title">The genetic architecture and evolution of the human skeletal form</div>
+                    <div class="publication-authors">Kun, Eucharist, Emily M. Javan, Olivia Smith, Faris Gulamali, Javier de la Fuente, Brianna I. Flynn, Kushal Vajrala et al.</div>
+                    <div class="publication-journal">Science 381, no. 6655 (2023): eadf8009. (front cover)
+                    </div>
+                </li>
+                <li>
+                    <div class="publication-title">Autoencoders for sample size estimation for fully connected neural network classifiers</div>
+                    <div class="publication-authors">Gulamali, F. F., Sawant, A. S., Kovatch, P., Glicksberg, B., Charney, A., Nadkarni, G. N., & Oermann, E</div>
+                    <div class="publication-journal">npj Digital Medicine, 5(1), 180.</div>
+                </li>
+                <li>
+                    <div class="publication-title">Federated Learning in Risk Prediction: A Primer and Application to COVID-19 Associated Acute kidney Injury</div>
+                    <div class="publication-authors">Faris F Gulamali. Girish N. Nadkarni</div>
+                    <div class="publication-journal">Nephron. DOI: 10.1159/000525645.</div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact</h2>
+            <div class="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" class="form-control" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <p>Faris Gulamali</p>
+                    <p>Icahn School of Medicine at Mount Sinai</p>
+                </div>
+                <ul class="footer-links">
+                    <li><a href="https://www.linkedin.com/in/pharce/">LinkedIn</a></li>
+                    <li><a href="https://www.researchgate.net/scientific-contributions/Faris-F-Gulamali-2206931074">ResearchGate</a></li>
+                    <li><a href="https://scholar.google.com/citations?user=nhttRToAAAAJ&hl=en">Google Scholar</a></li>
+                </ul>
+            </div>
+            <p class="copyright">© 2025 Faris Gulamali. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
